@@ -1,6 +1,7 @@
 # MicrosoftOpenAI
 
 Microsoft Article for Open AI
+
 Monitoring Azure OpenAI (microsoft.com)
 
 Azure Policies
