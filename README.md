@@ -1,4 +1,4 @@
-# MicrosoftOpenAI
+# Microsoft OpenAI
 
 Microsoft Article for Open AI
 
