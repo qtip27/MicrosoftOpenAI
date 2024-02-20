@@ -6,9 +6,13 @@ Monitoring Azure OpenAI (microsoft.com)
 Azure Policies
 
 Open AI Policies:
+
 Deploy Diagnostic Settings for Azure OpenAI to Log Analytics workspace (Custom Built)
+
 Permit only approved OpenAI models (Custom/Community)
+
 Audit OpenAI instances with content filtering enabled (Custom/Community)
+
 Audit OpenAI instances public access enabled (Custom/Community)
 Container :Azure Container Instance container group should deploy into a virtual network (Builtin or Custom)
 Network Security Group: Create NSG and Attach to Existing Subnet (Custom Built)
