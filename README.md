@@ -1,4 +1,4 @@
-# Microsoft OpenAI
+# Microsoft Azure OpenAI
 
 I have created a new GitHub repository named 'OpenAI_Azure' to manage Azure policies for OpenAI. The repository is set up to store Azure Policy definitions and related resources for governing OpenAI services on the Azure platform. Feel free to contribute or collaborate on defining and enforcing policies that align with OpenAI's security and compliance requirements.
 
