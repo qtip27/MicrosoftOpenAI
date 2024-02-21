@@ -6,7 +6,7 @@
 
 "Feel free to contribute or collaborate on defining and enforcing policies that align with OpenAI's security and compliance requirements."
 
-Microsoft Article for Open AI
+# Microsoft Article for Open AI
 
 Monitoring Azure OpenAI (microsoft.com)
 
