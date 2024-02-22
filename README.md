@@ -10,7 +10,7 @@ I have created a new GitHub repository named 'Microsoft Azure OpenAI' to show Az
 
 # Azure Policies
 
-Here are some policies for Open AI for Security:
+Here are some policies for your Open AI environment for Logging/Security:
   
 -Deploy Diagnostic Settings for Azure OpenAI to Log Analytics workspace (Custom Built)
 
