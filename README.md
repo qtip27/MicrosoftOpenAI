@@ -8,7 +8,7 @@ I have created a new GitHub repository named 'Microsoft Azure OpenAI' to show Az
 
 [Security Best Practices for GenAI Applications (OpenAI) in Azure](https://techcommunity.microsoft.com/t5/azure-architecture-blog/security-best-practices-for-genai-applications-openai-in-azure/ba-p/4027885)
 
-<h2>Azure Policies<h2>
+Azure Policies
 
 Here are some policies for Open AI for Security:
   
