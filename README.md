@@ -18,11 +18,21 @@ Description: Deploys the diagnostic settings for Azure OpenAI to stream to a Log
 
 
 
-Permit only approved OpenAI models (Custom/Community)
+[Permit only approved OpenAI models (Custom/Community)](https://github.com/qtip27/MicrosoftOpenAI/blob/main/OpenAI_models.json)
 
--Audit OpenAI instances with content filtering enabled (Custom/Community)
+Description: This policy permits only certain types of OpenAI models to be deployed
 
--Audit OpenAI instances public access enabled (Custom/Community)
+
+[Audit OpenAI instances with content filtering enabled (Custom/Community)](https://github.com/qtip27/MicrosoftOpenAI/blob/main/OpenAI_instances.json)
+
+Description: Azure OpenAI Service includes a content management system that filters content. If you are working with sensitive data, content filtering should be disabled so that Microsoft is not processing your data.
+
+
+[Audit OpenAI instances public access enabled (Custom/Community)](https://github.com/qtip27/MicrosoftOpenAI/blob/main/public_access.json)
+
+Description: Azure OpenAI instances should not have public access enabled. Open AI instances should only be accessible via select networks or a private endpoint.
+
+
 
 -Container :Azure Container Instance container group should deploy into a virtual network (Builtin or Custom)
 
