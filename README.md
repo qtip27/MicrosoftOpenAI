@@ -38,11 +38,19 @@ Description: Azure OpenAI instances should not have public access enabled. Open 
 Description: Secure communication between your containers with Azure Virtual Networks. When you specify a virtual network, resources within the virtual network can securely and privately communicate with each other.
 
 
-
 [Network Security Group: Create NSG and Attach to Existing Subnet (Custom Built)](https://github.com/qtip27/MicrosoftOpenAI/blob/main/Network_Security.json)
+
+Description: "lThis policy checks for an existing Virtual Network and Subnet, creates a Network Security Group if it doesn't exist, and attaches it to the existing Subnet.
+
 
 [Network Security Group:Flow logs should be configured for every network security group (Builtin or Custom)](https://github.com/qtip27/MicrosoftOpenAI/blob/main/Flow_Logs.json)
 
+Description: Audit for network security groups to verify if flow logs are configured. Enabling flow logs allows to log information about IP traffic flowing through network security group. It can be used for optimizing network flows, monitoring throughput, verifying compliance, detecting intrusions and more.
+
+
 [Load Bal: Deploy Diagnostic Settings for Load Balancer to Log Analytics workspace (Builin or Custom)](https://github.com/qtip27/MicrosoftOpenAI/blob/main/LB_Diagnostic.json)
+
+Description: Deploys the diagnostic settings for Load Balancer to stream to a Log Analytics workspace when any Load Balancer which is missing this diagnostic settings is created or updated. The Policy will set the diagnostic with all metrics and category enabled.
+
 
 -Public IP: Enable logging by category group for Public IP addresses (microsoft.network/publicipaddresses) to Log Analytics (Builtin or Custom)
