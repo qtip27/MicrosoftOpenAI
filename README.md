@@ -17,6 +17,7 @@ I have created a new GitHub repository named 'Microsoft Azure OpenAI' to show Az
 Description: Deploys the diagnostic settings for Azure OpenAI to stream to a Log Analytics workspace when any Azure OpenAI which is missing this diagnostic settings is created or updated. The Policy will set the diagnostic with all metrics and category enabled
 
 
+
 Permit only approved OpenAI models (Custom/Community)
 
 -Audit OpenAI instances with content filtering enabled (Custom/Community)
