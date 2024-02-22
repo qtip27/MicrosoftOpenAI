@@ -1,0 +1,215 @@
+"properties": {
+        "displayName": "Create NSG and Attach to Existing Subnet",
+        "policyType": "Custom",
+        "mode": "All",
+        "description": "This policy checks for an existing Virtual Network and Subnet, creates a Network Security Group if it doesn't exist, and attaches it to the existing Subnet.",
+        "metadata": {
+            "category": "Network"
+        },
+        "parameters": {
+            "listOfIgnoredSubnetNames": {
+                "type": "Array",
+                "metadata": {
+                    "displayName": "Ignored subnet names",
+                    "description": "The list of subnet names the policy should ignore because they are reserved by NRP and incompatible with NSGs, such as GatewaySubnet, AzureBastionSubnet, etc"
+                },
+                "defaultValue": [
+                    "GatewaySubnet",
+                    "AzureBastionSubnet",
+                    "AzureFirewallSubnet",
+                    "AzureFirewallManagerSubnet",
+                    "AzureRouteServerSubnet"
+                ]
+            }
+        },
+        "policyRule": {
+            "if": {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Network/virtualNetworks/subnets"
+                    },
+                    {
+                        "not": {
+                            "value": "[resourceGroup().tags['Automation']]",
+                            "equals": "Ignore"
+                        }
+                    },
+                    {
+                        "not": {
+                            "field": "tags['Automation']",
+                            "equals": "Ignore"
+                        }
+                    },
+                    {
+                        "field": "name",
+                        "notIn": "[parameters('listOfIgnoredSubnetNames')]"
+                    }
+                ]
+            },
+            "then": {
+                "effect": "deployIfNotExists",
+                "details": {
+                    "type": "Microsoft.Network/virtualNetworks/subnets",
+                    "name": "[field('fullName')]",
+                    "existenceCondition": {
+                        "allOf": [
+                            {
+                                "field": "Microsoft.Network/virtualNetworks/subnets/networkSecurityGroup.id",
+                                "notIn": [
+                                    "null",
+                                    ""
+                                ]
+                            },
+                            {
+                                "field": "Microsoft.Network/virtualNetworks/subnets/networkSecurityGroup.id",
+                                "exists": "true"
+                            }
+                        ]
+                    },
+                    "roleDefinitionIds": [
+                        "/providers/Microsoft.Authorization/roleDefinitions/4d97b98b-1d4f-4787-a291-c67834d212e7"
+                    ],
+                    "deployment": {
+                        "properties": {
+                            "mode": "incremental",
+                            "template": {
+                                "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+                                "contentVersion": "1.0.0.1",
+                                "parameters": {
+                                    "fullSubnetName": {
+                                        "type": "String"
+                                    }
+                                },
+                                "variables": {
+                                    "VNetDeploymentName": "Policy",
+                                    "nsgDeploymentName": "[concat(variables('nsgName'), 'Deployment')]",
+                                    "vnetName": "[first(split(parameters('fullSubnetName'),'/'))]",
+                                    "subnetName": "[last(split(parameters('fullSubnetName'),'/'))]",
+                                    "nsgName": "[concat(variables('subnetName'), '-nsg')]",
+                                    "nsgUpdateJson": {
+                                        "networkSecurityGroup": {
+                                            "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
+                                        }
+                                    }
+                                },
+                                "resources": [
+                                    {
+                                        "type": "Microsoft.Resources/deployments",
+                                        "apiVersion": "2018-05-01",
+                                        "name": "[variables('nsgDeploymentName')]",
+                                        "properties": {
+                                            "mode": "Incremental",
+                                            "template": {
+                                                "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                                                "contentVersion": "1.0.0.0",
+                                                "resources": [
+                                                    {
+                                                        "location": "[reference(resourceId('Microsoft.Network/virtualNetworks', variables('vnetName')), '2019-09-01', 'Full').location]",
+                                                        "type": "Microsoft.Network/networkSecurityGroups",
+                                                        "name": "[variables('nsgName')]",
+                                                        "apiVersion": "2018-03-01",
+                                                        "properties": {
+                                                            "securityRules": [
+                                                                {
+                                                                    "name": "AllowLoadBalancerHealthInbound",
+                                                                    "properties": {
+                                                                        "description": "Allow inbound Azure Load Balancer health check.",
+                                                                        "access": "Allow",
+                                                                        "direction": "Inbound",
+                                                                        "priority": 100,
+                                                                        "protocol": "*",
+                                                                        "sourcePortRange": "*",
+                                                                        "sourceAddressPrefix": "AzureLoadBalancer",
+                                                                        "destinationPortRange": "*",
+                                                                        "destinationAddressPrefix": "*"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "name": "AllowApplicationInbound",
+                                                                    "properties": {
+                                                                        "description": "Allow internal web traffic into application.",
+                                                                        "access": "Allow",
+                                                                        "direction": "Inbound",
+                                                                        "priority": 300,
+                                                                        "protocol": "Tcp",
+                                                                        "sourcePortRange": "*",
+                                                                        "sourceAddressPrefix": "10.0.0.0/8",
+                                                                        "destinationPortRange": "443",
+                                                                        "destinationAddressPrefix": "VirtualNetwork"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "name": "DenyAllInbound",
+                                                                    "properties": {
+                                                                        "description": "Deny all other inbound traffic.",
+                                                                        "access": "Deny",
+                                                                        "direction": "Inbound",
+                                                                        "priority": 4000,
+                                                                        "protocol": "*",
+                                                                        "sourcePortRange": "*",
+                                                                        "sourceAddressPrefix": "*",
+                                                                        "destinationPortRange": "*",
+                                                                        "destinationAddressPrefix": "*"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "name": "DenyTraversalOutbound",
+                                                                    "properties": {
+                                                                        "description": "Deny outbound double hop traversal.",
+                                                                        "access": "Deny",
+                                                                        "direction": "Outbound",
+                                                                        "priority": 200,
+                                                                        "protocol": "Tcp",
+                                                                        "sourcePortRange": "*",
+                                                                        "sourceAddressPrefix": "VirtualNetwork",
+                                                                        "destinationAddressPrefix": "*",
+                                                                        "destinationPortRanges": [
+                                                                            "3389",
+                                                                            "22"
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Microsoft.Resources/deployments",
+                                        "name": "[concat('Policy-Update-Subnet-Without-NSG-', variables('subnetName'))]",
+                                        "apiVersion": "2018-05-01",
+                                        "properties": {
+                                            "mode": "Incremental",
+                                            "template": {
+                                                "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                                                "contentVersion": "1.0.0.0",
+                                                "resources": [
+                                                    {
+                                                        "apiVersion": "2018-11-01",
+                                                        "type": "Microsoft.Network/virtualNetworks/subnets",
+                                                        "name": "[parameters('fullSubnetName')]",
+                                                        "properties": "[union(reference(resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnetName'), variables('subnetName')), '2018-11-01'), variables('nsgUpdateJson'))]"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "dependsOn": [
+                                            "[variables('nsgDeploymentName')]"
+                                        ]
+                                    }
+                                ]
+                            },
+                            "parameters": {
+                                "fullSubnetName": {
+                                    "value": "[field('fullName')]"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
