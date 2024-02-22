@@ -5,6 +5,7 @@ I have created a new GitHub repository named 'Microsoft Azure OpenAI' to show Az
 <h2>Microsoft Article for Open AI</h2>
 
 [Monitoring Azure OpenAI (microsoft.com)](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/azure-openai-insights-monitoring-ai-with-confidence/ba-p/4026850)
+
 [Security Best Practices for GenAI Applications (OpenAI) in Azure](https://techcommunity.microsoft.com/t5/azure-architecture-blog/security-best-practices-for-genai-applications-openai-in-azure/ba-p/4027885)
 
 <h2>Azure Policies<h2>
