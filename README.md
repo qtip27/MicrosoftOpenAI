@@ -33,13 +33,16 @@ Description: Azure OpenAI Service includes a content management system that filt
 Description: Azure OpenAI instances should not have public access enabled. Open AI instances should only be accessible via select networks or a private endpoint.
 
 
+[Container Instances: Azure Container Instance container group should deploy into a virtual network (Builtin or Custom)](https://github.com/qtip27/MicrosoftOpenAI/blob/main/Container_Instance.json)
 
-[Container Instances: Azure Container Instance container group should deploy into a virtual network (Builtin or Custom)]
+Description: Secure communication between your containers with Azure Virtual Networks. When you specify a virtual network, resources within the virtual network can securely and privately communicate with each other.
 
--Network Security Group: Create NSG and Attach to Existing Subnet (Custom Built)
 
--Network Security Group:Flow logs should be configured for every network security group (Builtin or Custom)
 
--Load Bal: Deploy Diagnostic Settings for Load Balancer to Log Analytics workspace (Builin or Custom)
+[Network Security Group: Create NSG and Attach to Existing Subnet (Custom Built)](https://github.com/qtip27/MicrosoftOpenAI/blob/main/Network_Security.json)
+
+[Network Security Group:Flow logs should be configured for every network security group (Builtin or Custom)](https://github.com/qtip27/MicrosoftOpenAI/blob/main/Flow_Logs.json)
+
+[Load Bal: Deploy Diagnostic Settings for Load Balancer to Log Analytics workspace (Builin or Custom)](https://github.com/qtip27/MicrosoftOpenAI/blob/main/LB_Diagnostic.json)
 
 -Public IP: Enable logging by category group for Public IP addresses (microsoft.network/publicipaddresses) to Log Analytics (Builtin or Custom)
