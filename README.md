@@ -34,7 +34,7 @@ Description: Azure OpenAI instances should not have public access enabled. Open 
 
 
 
-[Container :Azure Container Instance container group should deploy into a virtual network (Builtin or Custom)]
+[Container Instances: Azure Container Instance container group should deploy into a virtual network (Builtin or Custom)]
 
 -Network Security Group: Create NSG and Attach to Existing Subnet (Custom Built)
 
