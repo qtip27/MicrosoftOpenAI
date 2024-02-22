@@ -9,24 +9,23 @@ I have created a new GitHub repository named 'Microsoft Azure OpenAI' to show Az
 [Security Best Practices for GenAI Applications (OpenAI) in Azure](https://techcommunity.microsoft.com/t5/azure-architecture-blog/security-best-practices-for-genai-applications-openai-in-azure/ba-p/4027885)
 
 <h2>Azure Policies<h2>
+
 Here are some policies for Open AI for Security:
   
-Open AI Policies:
+-Deploy Diagnostic Settings for Azure OpenAI to Log Analytics workspace (Custom Built)
 
-Deploy Diagnostic Settings for Azure OpenAI to Log Analytics workspace (Custom Built)
+-Permit only approved OpenAI models (Custom/Community)
 
-Permit only approved OpenAI models (Custom/Community)
+-Audit OpenAI instances with content filtering enabled (Custom/Community)
 
-Audit OpenAI instances with content filtering enabled (Custom/Community)
+-Audit OpenAI instances public access enabled (Custom/Community)
 
-Audit OpenAI instances public access enabled (Custom/Community)
+-Container :Azure Container Instance container group should deploy into a virtual network (Builtin or Custom)
 
-Container :Azure Container Instance container group should deploy into a virtual network (Builtin or Custom)
+-Network Security Group: Create NSG and Attach to Existing Subnet (Custom Built)
 
-Network Security Group: Create NSG and Attach to Existing Subnet (Custom Built)
+-Network Security Group:Flow logs should be configured for every network security group (Builtin or Custom)
 
-Network Security Group:Flow logs should be configured for every network security group (Builtin or Custom)
+-Load Bal: Deploy Diagnostic Settings for Load Balancer to Log Analytics workspace (Builin or Custom)
 
-Load Bal: Deploy Diagnostic Settings for Load Balancer to Log Analytics workspace (Builin or Custom)
-
-Public IP: Enable logging by category group for Public IP addresses (microsoft.network/publicipaddresses) to Log Analytics (Builtin or Custom)
+-Public IP: Enable logging by category group for Public IP addresses (microsoft.network/publicipaddresses) to Log Analytics (Builtin or Custom)
