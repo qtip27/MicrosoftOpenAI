@@ -12,7 +12,7 @@ I have created a new GitHub repository named 'Microsoft Azure OpenAI' to show Az
 
 Here are some policies to enforce for Open AI Security and Compliance:
   
--Deploy Diagnostic Settings for Azure OpenAI to Log Analytics workspace (Custom Built)
+-[Deploy Diagnostic Settings for Azure OpenAI to Log Analytics workspace (Custom Built)](https://github.com/qtip27/MicrosoftOpenAI/blob/main/diagnosticsettings.json)
 
 -Permit only approved OpenAI models (Custom/Community)
 
