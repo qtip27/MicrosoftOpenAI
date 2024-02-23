@@ -53,4 +53,6 @@ Description: Audit for network security groups to verify if flow logs are config
 Description: Deploys the diagnostic settings for Load Balancer to stream to a Log Analytics workspace when any Load Balancer which is missing this diagnostic settings is created or updated. The Policy will set the diagnostic with all metrics and category enabled.
 
 
--Public IP: Enable logging by category group for Public IP addresses (microsoft.network/publicipaddresses) to Log Analytics (Builtin or Custom)
+[Public IP: Enable logging by category group for Public IP addresses (microsoft.network/publicipaddresses) to Log Analytics (Builtin or Custom)](https://github.com/qtip27/MicrosoftOpenAI/blob/main/IP_Analtics.json)
+
+Description: Resource logs should be enabled to track activities and events that take place on your resources and give you visibility and insights into any changes that occur. This policy deploys a diagnostic setting using a category group to route logs to a Log Analytics workspace for Public IP addresses (microsoft.network/publicipaddresses).
