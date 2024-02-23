@@ -59,7 +59,7 @@ Description: Deploys the diagnostic settings for Load Balancer to stream to a Lo
 
 Description: Resource logs should be enabled to track activities and events that take place on your resources and give you visibility and insights into any changes that occur. This policy deploys a diagnostic setting using a category group to route logs to a Log Analytics workspace for Public IP addresses (microsoft.network/publicipaddresses).
 
-# Non-Compliant Polciies
+# Non-Compliant Policies
 
 If your looking for a way to get notified of your polcies not being compliance, you can use this article below to setup the alerts for this:
 
