@@ -42,7 +42,9 @@ Description: Secure communication between your containers with Azure Virtual Net
 
 [Network Security Group: Create NSG and Attach to Existing Subnet (Custom Built)](https://github.com/qtip27/MicrosoftOpenAI/blob/main/Network_Security.json)
 
-Description: "lThis policy checks for an existing Virtual Network and Subnet, creates a Network Security Group if it doesn't exist, and attaches it to the existing Subnet.
+Description: This policy checks for an existing Virtual Network and Subnet, creates a Network Security Group if it doesn't exist, and attaches it to the existing Subnet.
+
+With this policy, you can customize the Access Control List (ACL's) to which ports you want open. Look at thr policy for more details.
 
 
 [Network Security Group: Flow logs should be configured for every network security group (Builtin or Custom)](https://github.com/qtip27/MicrosoftOpenAI/blob/main/Flow_Logs.json)
