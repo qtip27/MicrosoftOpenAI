@@ -61,7 +61,7 @@ Description: Deploys the diagnostic settings for Load Balancer to stream to a Lo
 
 Description: Resource logs should be enabled to track activities and events that take place on your resources and give you visibility and insights into any changes that occur. This policy deploys a diagnostic setting using a category group to route logs to a Log Analytics workspace for Public IP addresses (microsoft.network/publicipaddresses).
 
-[Configure Azure Defender for open-source relational databases to be enabled]
+[Configure Azure Defender for open-source relational databases to be enabled](https://github.com/qtip27/MicrosoftOpenAI/blob/main/relational_database.json)
 
 Description: Azure Defender for open-source relational databases detects anomalous activities indicating unusual and potentially harmful attempts to access or exploit databases. Learn more about the capabilities of Azure Defender for open-source relational databases at https://aka.ms/AzDforOpenSourceDBsDocu. Important: Enabling this plan will result in charges for protecting your open-source relational databases. Learn about the pricing on Security Center's pricing page: https://aka.ms/pricing-security-center
 
